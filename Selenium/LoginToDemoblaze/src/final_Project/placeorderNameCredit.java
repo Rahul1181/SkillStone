@@ -1,0 +1,41 @@
+package final_Project;
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+public class placeorderNameCredit {
+	//TestNG get to know from where to start
+	@Test(priority=1)
+	public void phoneorder() throws InterruptedException {
+		//Aceess the browseer
+		DemoBlaze.browser();
+		DemoBlaze.waitfun();
+		//Select the product
+		DemoBlaze.driver.findElement(By.xpath("//a[text()='Nokia lumia 1520']")).click();
+		//Add product to Cart
+		DemoBlaze.driver.findElement(By.xpath("//a[@onclick='addToCart(2)']")).click();
+		//Move to cart section
+		DemoBlaze.driver.findElement(By.id("cartur")).click();
+		DemoBlaze.waitfun();
+		//Place Order
+		DemoBlaze.driver.findElement(By.xpath("//button[@class='btn btn-success']")).click();
+		//Add the credentials
+		DemoBlaze.driver.findElement(By.id("name")).sendKeys("Sukvinder");
+		DemoBlaze.driver.findElement(By.id("card")).sendKeys("4826154289753641");
+		DemoBlaze.waitfun();
+		//Click on Purchase button 
+		DemoBlaze.driver.findElement(By.xpath("//button[@onclick='purchaseOrder()']")).click();
+		DemoBlaze.waitfun();
+		
+		//Validate if we get conformation order or not
+		String check1=DemoBlaze.driver.findElement(By.xpath("//h2[text()='Thank you for your purchase!']")).getText();
+		Assert.assertEquals("Thank you for your purchase!", check1);
+		System.out.println("Hello Sukvinder "+check1);
+		Thread.sleep(3000);
+		//Click on confirmation button
+		DemoBlaze.driver.findElement(By.xpath("//button[text()='OK']")).click();
+		//Navigate to homepage
+		DemoBlaze.homepagelink();
+	}
+}

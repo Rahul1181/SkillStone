@@ -1,0 +1,33 @@
+package final_Project;
+
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+public class wrongCreditDetail {
+	@Test(priority=1)
+	public void phoneorder() {
+		//Access the browser of DemoBlaze class
+		DemoBlaze.browser();
+		DemoBlaze.waitfun();
+		//select the element 
+		DemoBlaze.driver.findElement(By.xpath("//a[text()='Nexus 6']")).click();
+		//Add to Cart
+		DemoBlaze.driver.findElement(By.xpath("//a[@onclick='addToCart(3)']")).click();
+		//Move to cart Section
+		DemoBlaze.driver.findElement(By.id("cartur")).click();
+		DemoBlaze.waitfun();
+		//Click on Place Order button
+		DemoBlaze.driver.findElement(By.xpath("//button[@class='btn btn-success']")).click();
+		//Add the details
+		DemoBlaze.driver.findElement(By.id("name")).sendKeys("Sukvinder");
+		DemoBlaze.driver.findElement(By.id("card")).sendKeys("xyz");
+		DemoBlaze.waitfun();
+		//Click on the Purchase button 
+		DemoBlaze.driver.findElement(By.xpath("//button[@onclick='purchaseOrder()']")).click();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//button[text()='OK']")).click();
+		//Move to Homepage
+		DemoBlaze.homepagelink();
+	}
+
+}

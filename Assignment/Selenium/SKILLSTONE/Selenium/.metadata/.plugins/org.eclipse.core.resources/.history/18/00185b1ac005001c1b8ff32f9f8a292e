@@ -1,0 +1,41 @@
+package final_Project;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+public class homepage{
+	@Test(priority=1)
+	public void contact() {
+		DemoBlaze.browser();
+		DemoBlaze.driver.findElement(By.xpath("//a[text()='Contact']")).click();
+		Assert.assertEquals("",DemoBlaze.driver.findElement(By.xpath("//*[@id='exampleModalLabel']")).getText());
+		
+	}
+	@Test(priority=2)
+	public void blankmessage() {
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//*[text()='Send message']")).click();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.switchTo().alert().accept();
+	}
+	@Test(priority=3)
+	public void newMessage() {
+		DemoBlaze.driver.findElement(By.xpath("//a[text()='Contact']")).click();
+		DemoBlaze.inputsetup();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//*[text()='Send message']")).click();
+		DemoBlaze.driver.switchTo().alert().accept();
+	}
+	@Test(priority=4)
+	public void buttons() {
+		DemoBlaze.driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		DemoBlaze.driver.findElement(By.xpath("//*[@id='next2']")).click();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//*[@id='prev2']")).click();
+	}
+	
+
+}

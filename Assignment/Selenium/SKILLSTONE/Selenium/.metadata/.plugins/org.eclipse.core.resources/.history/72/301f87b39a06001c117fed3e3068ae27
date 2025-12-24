@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2021-08-26T23:52:42 IST" name="Default suite" finished-at="2021-08-26T23:52:57 IST" duration-ms="14393">
+    <groups>
+    </groups>
+    <test started-at="2021-08-26T23:52:42 IST" name="Default test" finished-at="2021-08-26T23:52:57 IST" duration-ms="14393">
+      <class name="final_Project.contactsection">
+        <test-method signature="contact()[pri:1, instance:final_Project.contactsection@3c947bc5]" started-at="2021-08-26T23:52:42 IST" name="contact" finished-at="2021-08-26T23:52:54 IST" duration-ms="11246" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- contact -->
+        <test-method signature="blankmessage()[pri:2, instance:final_Project.contactsection@3c947bc5]" started-at="2021-08-26T23:52:54 IST" name="blankmessage" finished-at="2021-08-26T23:52:54 IST" duration-ms="311" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- blankmessage -->
+        <test-method signature="newMessage()[pri:3, instance:final_Project.contactsection@3c947bc5]" started-at="2021-08-26T23:52:54 IST" name="newMessage" finished-at="2021-08-26T23:52:57 IST" duration-ms="2678" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- newMessage -->
+      </class> <!-- final_Project.contactsection -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

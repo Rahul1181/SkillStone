@@ -1,0 +1,23 @@
+package Final_Submission;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+public class ValuesofSendKeys {
+	//Add details
+	public void keys2(WebElement driver) {
+		driver.sendKeys("Sukvinder");
+	/*driver.findElement(By.id("name")).sendKeys("Sukvinder");
+	driver.findElement(By.id("country")).sendKeys("India");
+	driver.findElement(By.id("city")).sendKeys("Phagwara");
+	driver.findElement(By.id("card")).sendKeys("4826154289753641");
+	driver.findElement(By.id("month")).sendKeys("08");
+	driver.findElement(By.id("year")).sendKeys("2040");*/
+	}
+}
+public class clickable{
+	public void clickto(WebElement element) {
+		element.click();
+	}
+	
+}

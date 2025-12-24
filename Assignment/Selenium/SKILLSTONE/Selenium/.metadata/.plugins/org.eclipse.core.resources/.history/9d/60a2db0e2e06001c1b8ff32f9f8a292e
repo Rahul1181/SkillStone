@@ -1,0 +1,26 @@
+package final_Project;
+
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+public class placeOrderwithoutCred {
+	@Test(priority=1)
+	public void phoneorder() {
+		DemoBlaze.browser();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//a[text()='Samsung galaxy s6']")).click();
+		//Add to Cart
+		DemoBlaze.driver.findElement(By.xpath("//a[@onclick='addToCart(1)']")).click();
+		DemoBlaze.driver.findElement(By.id("cartur")).click();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//button[@class='btn btn-success']")).click();
+		DemoBlaze.waitfun();
+		//Purchase 
+		DemoBlaze.driver.findElement(By.xpath("//button[@onclick='purchaseOrder()']")).click();
+		DemoBlaze.waitfun();
+		DemoBlaze.simpleAlert();
+		//DemoBlaze.driver.findElement(By.xpath("//button[text()='OK']")).click();
+		
+	}
+
+}

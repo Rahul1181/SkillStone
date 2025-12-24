@@ -1,0 +1,26 @@
+package final_Project;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+public class login {
+	@AfterTest
+	public void validlogin() {
+		DemoBlaze.browser();
+		DemoBlaze.driver.findElement(By.xpath("//a[@id='login2']")).click();
+		DemoBlaze.logincred();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//button[@class='btn btn-primary'][text()='Log in']")).click();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//li[@class='nav-item']//a[@id='nameofuser']")).click();
+	}
+	@Test(priority=2)
+	public void logout() {
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//*[@class='nav-item']//a[@id='logout2']")).click();
+	}
+	
+}

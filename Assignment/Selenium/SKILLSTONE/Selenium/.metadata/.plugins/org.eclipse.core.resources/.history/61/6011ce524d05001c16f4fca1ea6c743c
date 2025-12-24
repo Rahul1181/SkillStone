@@ -1,0 +1,42 @@
+package Final_Submission;
+
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class DemoBlazeAutomation {
+		public static void main(String[] args) {
+			//Access the chrome Driver
+			System.setProperty("webdriver.chrome.driver","C:\\Users\\RAHUL\\Desktop\\Final Project (Rahul Mandal)\\chromedriver_win32\\chromedriver.exe");
+			WebDriver driver=new ChromeDriver();
+			//Visit website
+			driver.navigate().to("https://www.demoblaze.com/index.html#");
+			//Select phone
+			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+			driver.findElement(By.xpath("//a[text()='Samsung galaxy s6']")).click();
+			//Add to Cart
+			driver.findElement(By.xpath("//a[@onclick='addToCart(1)']")).click();
+			driver.findElement(By.id("cartur")).click();
+			driver.findElement(By.xpath("//button[@class='btn btn-success']")).click();
+			//Add details
+			/*driver.findElement(By.id("name")).sendKeys("Sukvinder");
+			driver.findElement(By.id("country")).sendKeys("India");
+			driver.findElement(By.id("city")).sendKeys("Phagwara");
+			driver.findElement(By.id("card")).sendKeys("4826154289753641");
+			driver.findElement(By.id("month")).sendKeys("08");
+			driver.findElement(By.id("year")).sendKeys("2040");*/
+			//Purchase 
+			driver.findElement(By.xpath("//button[@onclick='purchaseOrder()']")).click();
+			driver.findElement(By.xpath("//button[text()='OK']")).click();
+			//navigate to homepage
+			driver.navigate().to("https://www.demoblaze.com/index.html#");
+	}
+
+
+
+
+}
+
+
+

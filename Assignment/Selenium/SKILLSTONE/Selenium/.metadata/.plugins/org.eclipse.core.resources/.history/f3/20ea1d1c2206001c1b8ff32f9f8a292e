@@ -1,0 +1,26 @@
+package final_Project;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+public class login {
+	@Test(priority=1)
+	public void validlogin() {
+		DemoBlaze.browser();
+		DemoBlaze.driver.findElement(By.xpath("//a[@id='login2']")).click();
+		DemoBlaze.logincred();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//button[@class='btn btn-primary'][text()='Log in']")).click();
+		DemoBlaze.driver.manage().timeouts().implicitlyWait(12000, TimeUnit.SECONDS);
+		DemoBlaze.driver.findElement(By.xpath("//a[text()='Laptops']")).click();
+	}
+	@Test(priority=2)
+	public void logout() {
+		DemoBlaze.driver.manage().timeouts().implicitlyWait(12000, TimeUnit.SECONDS);
+		DemoBlaze.driver.findElement(By.xpath("//*[@class='nav-item']//a[@id='logout2']")).click();
+		DemoBlaze.waitfun();
+	}
+	
+}

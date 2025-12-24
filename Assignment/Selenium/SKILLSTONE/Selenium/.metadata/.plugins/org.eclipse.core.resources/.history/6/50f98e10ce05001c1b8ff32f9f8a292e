@@ -1,0 +1,31 @@
+package final_Project;
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+public class contactsection {
+	@Test(priority=1)
+	public void contact() {
+		DemoBlaze.browser();
+		DemoBlaze.driver.findElement(By.xpath("//a[text()='Contact']")).click();
+		//Assert.assertEquals("",DemoBlaze.driver.findElement(By.xpath("//*[@id='exampleModalLabel']")).getText());
+		
+	}
+	@Test(priority=2)
+	public void blankmessage() {
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//*[text()='Send message']")).click();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.switchTo().alert().accept();
+	}
+	@Test(priority=3)
+	public void newMessage() {
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//a[text()='Contact']")).click();
+		DemoBlaze.inputsetup();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//*[text()='Send message']")).click();
+		DemoBlaze.driver.switchTo().alert().accept();
+	}
+}

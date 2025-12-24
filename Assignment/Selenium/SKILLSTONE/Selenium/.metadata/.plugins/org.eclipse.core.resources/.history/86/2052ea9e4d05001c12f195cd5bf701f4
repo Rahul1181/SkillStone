@@ -1,0 +1,42 @@
+package Final_Submission;
+
+import Final_Submission.ValuesofSendKeys;
+
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class DemoBlazeAutomation {
+		public static void main(String[] args) {
+			//Global Webdriver
+			WebDriver driver;
+			//Access the chrome Driver
+			System.setProperty("webdriver.chrome.driver","chromedriver.exe");
+			driver=new ChromeDriver();
+			//Visit website
+			driver.navigate().to("https://www.demoblaze.com/index.html#");
+			//Select phone
+			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+			driver.findElement(By.xpath("//a[text()='Samsung galaxy s6']")).click();
+			//Add to Cart
+			driver.findElement(By.xpath("//a[@onclick='addToCart(1)']")).click();
+			driver.findElement(By.id("cartur")).click();
+			driver.findElement(By.xpath("//button[@class='btn btn-success']")).click();
+			//Add details
+			ValuesofSendKeys vsk= new ValuesofSendKeys();
+			vsk.keys2("Sukvinder");
+			//Purchase 
+			driver.findElement(By.xpath("//button[@onclick='purchaseOrder()']")).click();
+			driver.findElement(By.xpath("//button[text()='OK']")).click();
+			//navigate to homepage
+			driver.navigate().to("https://www.demoblaze.com/index.html#");
+	}
+
+
+
+
+}
+
+
+

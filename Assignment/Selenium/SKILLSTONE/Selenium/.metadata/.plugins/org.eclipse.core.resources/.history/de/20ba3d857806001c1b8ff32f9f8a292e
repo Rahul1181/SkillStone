@@ -1,0 +1,9 @@
+package Final_Submission;
+
+import org.openqa.selenium.WebElement;
+
+public class clickable {
+	public void clickto(WebElement element) {
+		element.click();
+	}
+}

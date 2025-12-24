@@ -1,0 +1,32 @@
+package final_Project;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+public class placeorderwithoutLogin {
+	@Test(priority=1)
+	public void phoneorder() {
+		DemoBlaze.browser();
+		DemoBlaze.waitfun();
+		//Product Selection
+		DemoBlaze.driver.findElement(By.xpath("//a[text()='Samsung galaxy s6']")).click();
+		DemoBlaze.waitfun();
+		//Add to Cart
+		DemoBlaze.driver.findElement(By.xpath("//a[@onclick='addToCart(1)']")).click();
+		DemoBlaze.driver.findElement(By.xpath("//a[@onclick='addToCart(1)']")).click();
+		DemoBlaze.driver.findElement(By.id("cartur")).click();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//button[@class='btn btn-success']")).click();
+		DemoBlaze.payDetails();
+		DemoBlaze.waitfun();
+		//Purchase 
+		DemoBlaze.driver.findElement(By.xpath("//button[@onclick='purchaseOrder()']")).click();
+		DemoBlaze.driver.findElement(By.xpath("//button[text()='OK']")).click();
+		//navigate to homepage
+		DemoBlaze.driver.navigate().to("https://www.demoblaze.com/index.html#");
+		
+	}
+
+}

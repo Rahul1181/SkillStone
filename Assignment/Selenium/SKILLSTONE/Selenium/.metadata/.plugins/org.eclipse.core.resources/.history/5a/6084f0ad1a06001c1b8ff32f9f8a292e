@@ -1,0 +1,16 @@
+package final_Project;
+
+import org.openqa.selenium.By;
+
+public class login {
+	public void validlogin() {
+		DemoBlaze.browser();
+		DemoBlaze.driver.findElement(By.xpath("//a[@id='login2']")).click();
+		DemoBlaze.logincred();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//button[@class='btn btn-primary'][text()='Log in']")).click();
+	}
+	
+	
+
+}

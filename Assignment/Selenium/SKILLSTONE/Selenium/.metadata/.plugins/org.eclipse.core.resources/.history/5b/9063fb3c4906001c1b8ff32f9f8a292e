@@ -1,0 +1,54 @@
+package final_Project;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.testng.annotations.Test;
+
+public class signup {
+	
+	@Test(priority=1)
+	public void blanksignup() {
+		DemoBlaze.browser();
+		DemoBlaze.driver.findElement(By.id("signin2")).click();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//div[@class='modal-footer']//button[text()='Sign up']")).click();
+		DemoBlaze.simpleAlert();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//div[@id='signInModal']//button[@class='btn btn-secondary'][text()='Close']")).click();
+	}
+	
+	@Test(priority=2)
+	public void validsignup() {
+		//DemoBlaze.browser();
+		//DemoBlaze.driver.findElement(By.id("signin2")).click();
+		try {
+			DemoBlaze.driver.findElement(By.id("signin2")).click();
+		}
+		catch(StaleElementReferenceException se) {
+			DemoBlaze.driver.findElement(By.id("signin2")).click();
+		}
+		DemoBlaze.credentials();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//div[@class='modal-footer']//button[text()='Sign up']")).click();
+		try {
+			DemoBlaze.simpleAlert();
+		}
+		catch(StaleElementReferenceException sea) {
+			DemoBlaze.simpleAlert();
+		}
+		try {
+			DemoBlaze.driver.findElement(By.xpath("//div[@id='signInModal']//button[@class='btn btn-secondary'][text()='Close']")).click();
+		}
+		catch(StaleElementReferenceException sea) {
+			DemoBlaze.driver.findElement(By.xpath("//div[@id='signInModal']//button[@class='btn btn-secondary'][text()='Close']")).click();
+		}
+			
+	}
+	
+	
+	
+	
+	
+}

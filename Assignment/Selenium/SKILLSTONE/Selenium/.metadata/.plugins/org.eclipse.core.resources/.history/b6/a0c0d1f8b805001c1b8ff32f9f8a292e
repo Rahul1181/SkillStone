@@ -1,0 +1,28 @@
+package final_Project;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class DemoBlaze {
+	//Global driver
+	static WebDriver driver;
+	public static void browser() {
+		//Access the chrome Driver
+		System.setProperty("webdriver.chrome.driver","D:\\Final Project (Rahul Mandal)\\chromedriver_win32\\chromedriver.exe");
+		driver=new ChromeDriver();
+		//Visit website
+		driver.navigate().to("https://www.demoblaze.com/index.html#");
+		//driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	}
+	/*public static void inputsetup() {
+		driver.findElement(By.id("recipient-email")).sendKeys("admin");
+		driver.findElement(By.id("recipient-name")).sendKeys("Rahul");
+		driver.findElement(By.id("message-text")).sendKeys("Thankyou for the service I am toally satisfied from it");
+	}*/
+	
+	
+}

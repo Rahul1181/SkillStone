@@ -1,0 +1,49 @@
+package final_Project;
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+public class wrongCreditDetail {
+	//TestNG get to know from where to start
+	@Test(priority=1)
+	public void phoneorder() throws InterruptedException {
+		//Access the browser of DemoBlaze class
+		DemoBlaze.browser();
+		DemoBlaze.waitfun();
+		//select the product
+		DemoBlaze.driver.findElement(By.xpath("//a[text()='Nexus 6']")).click();
+		//Add to Cart
+		DemoBlaze.driver.findElement(By.xpath("//a[@onclick='addToCart(3)']")).click();
+		Thread.sleep(3000);
+		DemoBlaze.driver.switchTo().alert().accept();
+		//Move to cart Section
+		DemoBlaze.driver.findElement(By.id("cartur")).click();
+		
+		//Check if product is in cart
+		String check1=DemoBlaze.driver.findElement(By.xpath("//td[text()='Nexus 6']")).getText();
+		Assert.assertEquals("Nexus 6", check1);
+		System.out.println("Name of the product: "+check1);
+		
+		//Click on Place Order button
+		DemoBlaze.driver.findElement(By.xpath("//button[@class='btn btn-success']")).click();
+		//Add the details
+		DemoBlaze.driver.findElement(By.id("name")).sendKeys("Sukvinder");
+		DemoBlaze.driver.findElement(By.id("card")).sendKeys("xyz");
+		DemoBlaze.waitfun();
+		//Click on the Purchase button 
+		DemoBlaze.driver.findElement(By.xpath("//button[@onclick='purchaseOrder()']")).click();
+		
+		//Validate for invalid credit card
+		String check2=DemoBlaze.driver.findElement(By.xpath("//h2[text()='Thank you for your purchase!']")).getText();
+		Assert.assertEquals("Thank you for your purchase!", check2);
+		System.out.println("Hello Sukvinder "+check2);
+		Thread.sleep(3000);
+		
+		//Click ok button
+		DemoBlaze.driver.findElement(By.xpath("//button[text()='OK']")).click();
+		//Move to Homepage
+		DemoBlaze.homepagelink();
+	}
+
+}

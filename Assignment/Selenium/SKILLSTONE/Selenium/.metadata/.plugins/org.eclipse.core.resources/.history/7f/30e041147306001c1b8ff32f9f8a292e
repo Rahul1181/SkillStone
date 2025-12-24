@@ -1,0 +1,30 @@
+package final_Project;
+
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+public class emptyCart {
+	////TestNG get to know from where to start
+	@Test(priority=1)
+	public void phoneorder() {
+		//Access the Browser from DemoBlaze class
+		DemoBlaze.browser();
+		DemoBlaze.waitfun();
+		//Click on the cart link under title section
+		DemoBlaze.driver.findElement(By.id("cartur")).click();
+		DemoBlaze.waitfun();
+		//Click on the PlaceOrder Button 
+		DemoBlaze.driver.findElement(By.xpath("//button[@class='btn btn-success']")).click();
+		//Accessing method from BaseCalss for credentials
+		DemoBlaze.payDetails();
+		DemoBlaze.waitfun();
+		//Click on Purchase button
+		DemoBlaze.driver.findElement(By.xpath("//button[@onclick='purchaseOrder()']")).click();
+		DemoBlaze.waitfun();
+		//Click on the OK button
+		DemoBlaze.driver.findElement(By.xpath("//button[text()='OK']")).click();
+		//Retur top Homepage
+		DemoBlaze.homepagelink();
+	}
+
+}

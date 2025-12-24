@@ -1,0 +1,38 @@
+package final_Project;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.testng.annotations.Test;
+
+public class login {
+	//TestNG get to know from where to start
+	@Test(priority=1)
+	public void validlogin() {
+		//Access the Browser
+		DemoBlaze.browser();
+		//Click on Login Button
+		DemoBlaze.driver.findElement(By.xpath("//a[@id='login2']")).click();
+		DemoBlaze.waitfun();
+		//Add the credentials
+		DemoBlaze.logincred();
+		DemoBlaze.waitfun();
+		//Click on Login Button
+		DemoBlaze.driver.findElement(By.xpath("//button[@class='btn btn-primary'][text()='Log in']")).click();
+		DemoBlaze.waitfun();
+	}
+	@Test(priority=2)
+	public void logout() {
+		//Logout using Try and catch to avoid stale Element exception
+		DemoBlaze.waitfun();
+		try {
+			DemoBlaze.driver.findElement(By.xpath("//*[@class='nav-item']//a[@id='logout2']")).click();
+		}
+		catch(StaleElementReferenceException se) {
+			DemoBlaze.driver.findElement(By.xpath("//*[@class='nav-item']//a[@id='logout2']")).click();
+		}
+		
+	}
+	
+}

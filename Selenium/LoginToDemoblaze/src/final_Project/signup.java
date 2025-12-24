@@ -1,0 +1,66 @@
+package final_Project;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Assert;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.testng.annotations.Test;
+
+public class signup {
+	//TestNG get to know from where to start
+	@Test(priority=1)
+	public void blanksignup() throws InterruptedException {
+		//Access the browser from BaseClass DemoBlaze
+		DemoBlaze.browser();
+		//Click on the Sign Up link
+		DemoBlaze.driver.findElement(By.id("signin2")).click();
+		DemoBlaze.waitfun();
+		//Click on the Signup Button
+		DemoBlaze.driver.findElement(By.xpath("//div[@class='modal-footer']//button[text()='Sign up']")).click();
+		DemoBlaze.waitfun();
+		//Validate if error message occur or not
+		Alert alert=DemoBlaze.driver.switchTo().alert();
+		Assert.assertEquals("Please fill out Username and Password.", alert.getText());
+		//Access the simple alert form BaseClass DEmoBlaze
+		DemoBlaze.simpleAlert();
+		//Cancel the Signup Page using close button
+		Thread.sleep(3000);
+		DemoBlaze.driver.findElement(By.xpath("//div[@id='signInModal']//button[@class='btn btn-secondary'][text()='Close']")).click();
+		
+	}
+	
+	@Test(priority=2)
+	public void validsignup() throws InterruptedException {
+		DemoBlaze.driver.findElement(By.id("signin2")).click();
+		//Access the credentials method from BaseClass DemoBlaze
+		DemoBlaze.credentials();
+		Thread.sleep(3000);
+		//Click on Signup Button using try and catch to avoid StaleElementReferenceException
+		try {
+			DemoBlaze.driver.findElement(By.xpath("//div[@class='modal-footer']//button[text()='Sign up']")).click();
+		}
+		catch(StaleElementReferenceException ser){
+			DemoBlaze.driver.findElement(By.xpath("//div[@class='modal-footer']//button[text()='Sign up']")).click();
+		}
+		//Suspends execution of the current thread
+		Thread.sleep(3000);
+		//Validate for correct signup details 
+		Alert alert=DemoBlaze.driver.switchTo().alert();
+		Assert.assertEquals("This user already exist.", alert.getText());
+		System.out.println("Thank you for the signup");
+		//Deals with simple alert
+		DemoBlaze.simpleAlert();
+		DemoBlaze.waitfun();
+		DemoBlaze.driver.findElement(By.xpath("//div[@id='signInModal']//button[@class='btn btn-secondary'][text()='Close']")).click();
+		
+			
+	}
+	
+	
+	
+	
+	
+}

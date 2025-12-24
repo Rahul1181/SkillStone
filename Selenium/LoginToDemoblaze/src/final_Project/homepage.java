@@ -1,0 +1,44 @@
+package final_Project;
+
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.testng.annotations.Test;
+
+public class homepage{
+	//TestNG get to know from where to start
+	@Test(priority=1)
+	//Checks all the button under homepage
+	public void buttoncheck() {
+		//Access chrome Browser
+		DemoBlaze.browser();
+		//Click on Next Button using try and catch to avoid StaleElementReferenceException
+		try {
+			DemoBlaze.driver.findElement(By.xpath("//*[@id='next2']")).click();
+		}
+		catch(StaleElementReferenceException se) {
+			DemoBlaze.driver.findElement(By.xpath("//*[@id='next2']")).click();
+		}
+		//Call of wait function from DemoBlaze
+		DemoBlaze.waitfun();
+		//Click on Previous Button
+		DemoBlaze.driver.findElement(By.xpath("//*[@id='prev2']")).click();
+		//Click the arrow button of flash Banner
+		DemoBlaze.driver.findElement(By.className("carousel-control-next-icon")).click();
+		
+	}
+	@Test(priority=2)
+	public void category() {
+		//Click on laptop category under homepage
+		DemoBlaze.driver.findElement(By.xpath("//a[text()='Laptops']")).click();
+		
+		//Validate if laptop section is clickable or not
+		String check1=DemoBlaze.driver.findElement(By.xpath("//a[text()='Sony vaio i5']")).getText();
+		Assert.assertEquals("Sony vaio i5", check1);
+		System.out.println("You have selected the product "+check1);
+	}
+
+}
